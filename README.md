@@ -46,7 +46,7 @@ As a user, I am able to get comments of a post.
 As a user, I am able to get detail a single post.(with comments, reaction)
 As a user, I am able to share my thoughts and interests by creating content (text, images, or video). 
 As a user, I am able to edit and delete my posts. 
-As a user, I am able to view my own posts as well as other users� content (wall).  
+As a user, I am able to view my own posts as well as other users content (wall).  
 
 Comment: 
 As a user, I am able to get a list of comments of a post.
