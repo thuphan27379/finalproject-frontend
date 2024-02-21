@@ -8,21 +8,34 @@ import { CssBaseline } from "@mui/material"; //xoa css mac dinh cua MUI
 
 import customizeComponents from "./customizations";
 
+// const themeCustom = createTheme({
+//   palette: {
+//     primary: {
+//       main: "#B31942 ", //700
+//       light: "#e65e7a", //300
+//       dark: "#7c093a",
+//       contrastText: "#fbe3e7",
+//     },
+//     secondary: {
+//       main: "#0A3161", //800
+//       light: "#476390", //400
+//       dark: "#04214a",
+//       contrastText: "#e5e8ef",
+//     },
+//   },
+// });
+
 // custom theme, design
 const PRIMARY = {
-  lighter: "#C8FACD",
-  light: "#5BE584",
-  main: "#00AB55",
-  dark: "#007B55",
-  darker: "#005249",
+  light: "#e65e7a",
+  main: "#B31942 ",
+  dark: "#7c093a",
   contrastText: "#FFF",
 };
 const SECONDARY = {
-  lighter: "#D6E4FF",
-  light: "#84A9FF",
-  main: "#3366FF",
-  dark: "#1939B7",
-  darker: "#091A7A",
+  light: "#476390",
+  main: "#0A3161",
+  dark: "#04214a",
   contrastText: "#FFF",
 };
 const SUCCESS = {

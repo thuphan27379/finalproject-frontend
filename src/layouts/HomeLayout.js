@@ -1,26 +1,31 @@
 import { Outlet } from "react-router-dom";
 import { Box, Stack } from "@mui/material";
 
-import MainFooter from "./MainFooter";
-import HomeHeader from "./HomeHeader";
 import AlertMsg from "../components/AlertMsg";
+import HomeHeader from "./HomeHeader";
 import LeftBar from "./LeftBar";
 import RightBar from "./RightBar";
+import MainFooter from "./MainFooter";
 
-//
+// kiem tra width
 function HomeLayout() {
   return (
     <Stack sx={{ minHeight: "100vh" }}>
-      <HomeHeader />
+      <Stack>
+        <HomeHeader />
+      </Stack>
 
       <AlertMsg />
       {/* react toastify */}
 
-      <LeftBar/>
+      <Stack>
+        {/* 3 thanh phan nay phai xep theo hang ngang */}
+        <LeftBar />
 
-      <Outlet />
+        <Outlet />
 
-      <RightBar/>
+        <RightBar />
+      </Stack>
 
       <Box sx={{ flexGrow: 1 }} />
 

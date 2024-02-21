@@ -1,10 +1,11 @@
 :root {
-  --primary-color : #B31942;
+  --primary-color-red : #B31942;
   --primary-color-blue : #0A3161;
   --white-color : #fff;
   --black-color : #000;
   --text-color : #333;
   --border-color : #dbdbdb;
+  --error-text-color: #B00020;
   --header-height : 120px;
   --navbar-height : 34px;
   --header-sort-bar-height : 46px;
@@ -12,7 +13,7 @@
   --box-shadow : 0 0 0 2px rgb(10, 49, 97, 0.1);
   }
 
-  * {
+  * {    
   box-sizing : inherit;
   margin : 0;
   padding : 0;
@@ -38,6 +39,8 @@
   h1 {
   font-size : 2em;
   margin : 0.67em 0;
+  color: #000;
+  font-weight: 600;
   }
 
   p {

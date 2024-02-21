@@ -66,16 +66,16 @@ Reaction:
 As a user, I am able to create a like/dislike on posts OR comments.
 
 Admin app - dashboard: (admin.domain.com)
-database management:
+*database management:
 -edit menu
 -update content, media
 -add/replace
-authorization:
+*authorization:
 -accounts management
 -approve/
-hosting & domains:
-security:
-digital marketing:
+*hosting & domains:
+*security:
+*digital marketing:
 
 \*API endpoints:
 
