@@ -16,10 +16,14 @@ import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase"; //
 import SearchIcon from "@mui/icons-material/Search"; //
 import { upperCase } from "lodash";
+import { Badge } from "@mui/material";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import PublicIcon from "@mui/icons-material/Public";
 
 // https://mui.com/material-ui/react-app-bar/
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = ["About us", "Projects", "Domains", "Startup", "Blog"];
+const settings = ["Account", "Setting", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -87,10 +91,15 @@ function ResponsiveAppBar() {
   //
   return (
     <AppBar
-      position="static"
-      sx={{ backgroundColor: "#0A3161", width: "1024px" }}
+      position="fixed"
+      maxWidth="100%"
+      sx={{
+        backgroundColor: "#0A3161",
+        // width: "1024px",
+        zIndex: (theme) => theme.zIndex.drawer + 1,
+      }}
     >
-      {/* CENTER ? */}
+      {/*  */}
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* logo here */}
@@ -115,7 +124,7 @@ function ResponsiveAppBar() {
             MyCompany
           </Typography>
 
-          {/* main menu ON THE RIGHT OF BAR*/}
+          {/* main menu */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
@@ -169,6 +178,33 @@ function ResponsiveAppBar() {
             ))}
           </Box>
 
+          {/* search input  */}
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search"
+              inputProps={{ "aria-label": "search" }}
+            />
+          </Search>
+
+          <IconButton
+            size="large"
+            aria-label="show 4 new mails"
+            color="inherit"
+          >
+            <LightModeIcon />
+          </IconButton>
+          <IconButton
+            size="large"
+            aria-label="show 17 new notifications"
+            color="inherit"
+          >
+            <PublicIcon />
+          </IconButton>
+
+          {/* menu account  */}
           <Box sx={{ flexGrow: 0 }}>
             {/* thay avatar account vo */}
             <Tooltip title="Open settings">
@@ -176,6 +212,7 @@ function ResponsiveAppBar() {
                 <Avatar alt="" src="./logo.png" />
               </IconButton>
             </Tooltip>
+
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
@@ -199,17 +236,6 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-
-          {/* search CAN PHAI CHO XUONG HANG*/}
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
         </Toolbar>
       </Container>
     </AppBar>

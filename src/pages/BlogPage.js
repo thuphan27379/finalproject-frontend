@@ -16,7 +16,8 @@ import FriendRequests from "../features/friend/FriendRequests";
 import FriendList from "../features/friend/FriendList";
 import OutgoingSents from "../features/friend/OutgoingSent";
 
-//user profile page
+// giong FB
+//user profile page: bo cover img, tabs
 const TabsWrapperStyle = styled("div")(({ theme }) => ({
   // MUI styled() for cover
   zIndex: 9,
@@ -77,7 +78,8 @@ function BlogPage() {
     },
   ];
 
-  //render
+  // render
+  // tu tren xuong: postForm -> postList
   return (
     <Container>
       <Card

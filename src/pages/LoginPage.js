@@ -70,6 +70,7 @@ function LoginPage() {
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={3}>
           {/* message error & go to sign up */}
+          {/* severity="" khong hide phia duoi appbar khi scroll */}
           {!!errors.responseError && (
             <Alert severity="error">{errors.responseError.message}</Alert>
           )}

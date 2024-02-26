@@ -6,7 +6,7 @@ import App from "./App"; //
 import store from "./app/store"; //
 // import {createRoot} from "react-dom/client"
 
-//
+// provider redux?
 ReactDOM.render(
   <Provider store={store}>
     <App />

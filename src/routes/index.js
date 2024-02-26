@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import BlankLayout from "../layouts/BlankLayout"; // bo
+// import BlankLayout from "../layouts/BlankLayout"; // bo
 import BlogPage from "../pages/BlogPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
@@ -32,8 +32,14 @@ function Router() {
       </Route>
 
       {/* public, index: landing page */}
+      {/* lam them nhung slug cua /home OR route rieng?!?! */}
       <Route path="/" element={<HomeLayout />}>
         <Route index path="/home" element={<HomePage />} />
+        <Route index path="/aboutus" element={<HomePage />} />
+        <Route index path="/projects" element={<HomePage />} />
+        <Route index path="/domains" element={<HomePage />} />
+        <Route index path="/startup" element={<HomePage />} />
+        {/*  */}
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/user/:userId" element={<UserProfilePage />} />
       </Route>

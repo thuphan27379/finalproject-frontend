@@ -12,6 +12,8 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
+// bo right border left bar?!?!
+// bo cac icon phia truoc menu
 const drawerWidth = 240;
 
 export default function LeftBar() {
@@ -26,17 +28,27 @@ export default function LeftBar() {
             width: drawerWidth,
             boxSizing: "border-box",
           },
+          "& .MuiPaper-root": {
+            top: "70px",
+          },
         }}
         variant="permanent"
         anchor="left"
       >
         <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+          {[
+            "Startup Support Program",
+            "Our Projects",
+            "Cooperate with us",
+            "Domains for sale",
+            "Your Domains",
+            "Donate us",
+          ].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
-                <ListItemIcon>
+                {/* <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
+                </ListItemIcon> */}
                 <ListItemText primary={text} />
               </ListItemButton>
             </ListItem>

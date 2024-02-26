@@ -10,23 +10,25 @@ import {
   IconButton,
   Popover,
   Button,
+  alpha,
 } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import Modal from "@mui/material/Modal";
 import { useDispatch, useSelector } from "react-redux";
+import { LoadingButton } from "@mui/lab";
 
 import { fDate } from "../../utils/formatTime";
 import PostReaction from "./PostReaction";
 import CommentForm from "../comment/CommentForm";
 import CommentList from "../comment/CommentList";
-import { FUploadImage } from "../../components/form";
-import { deletePost } from "../post/postSlice";
-import { editPost } from "../post/postSlice";
+import { deletePost, editPost } from "../post/postSlice";
+import { FTextField, FUploadImage, FormProvider } from "../../components/form";
 
-// every post in post list
+//show a post with comment and reaction, delete/edit
 const yupSchema = Yup.object().shape({
   content: Yup.string().required("Content is required"),
 });
@@ -68,30 +70,8 @@ function PostCard({ post }) {
 
   // handleEdit a post
   const [editedContent, setEditedContent] = React.useState(post.content); // New state for edited content
-  const [isEditing, setIsEditing] = React.useState(false); // State to track editing mode
-
-  const handleEdit = () => {
-    setIsEditing(true); // Set editing mode to true when the "Edit" button is clicked
-  };
-
-  const handleSave = () => {
-    // Dispatch the editPost action with the edited content and post ID
-    dispatch(
-      editPost({ postId: post._id, content: editedContent, image: post.image })
-    );
-    setIsEditing(false); // Reset editing mode after saving changes
-    handleClose();
-  };
-
-  const handleContentChange = (e) => {
-    e.stopPropagation();
-    setEditedContent(e.target.value);
-  };
-
-  const handleInputMouseDown = (e) => {
-    // Stop the event propagation to prevent closing the popover when clicking on the input
-    e.stopPropagation();
-  };
+  const [isEditing] = React.useState(false); // State to track editing mode
+  const [openModal, setOpenModal] = React.useState(false);
 
   //
   const methods = useForm({
@@ -99,9 +79,26 @@ function PostCard({ post }) {
     defaultValues,
   });
 
-  const { setValue } = methods;
+  // modal edit
+  const handleOpenModal = () => setOpenModal(true);
+  const handleCloseModal = () => setOpenModal(false);
 
-  // edit image
+  const {
+    handleSubmit,
+    formState: { isSubmitting },
+    reset,
+    setValue,
+  } = methods;
+
+  const onSubmit = (data) => {
+    if (!data.image && post.image) {
+      data.image = post.image;
+    }
+    dispatch(
+      editPost({ postId: post._id, content: data.content, image: data.image })
+    ).then(() => reset());
+  };
+
   const handleDrop = useCallback(
     (acceptedFiles) => {
       const file = acceptedFiles[0];
@@ -117,6 +114,8 @@ function PostCard({ post }) {
     },
     [setValue]
   );
+
+  const { isLoading } = useSelector((state) => state.post);
 
   //
   return (
@@ -152,7 +151,7 @@ function PostCard({ post }) {
         }
       />
 
-      {/* popover */}
+      {/* popover modal delete & edit */}
       <Popover
         open={open}
         anchorEl={anchorEl}
@@ -164,31 +163,83 @@ function PostCard({ post }) {
       >
         <Button sx={{ p: 1, fontSize: 10 }} onClick={handleDelete}>
           Delete
-        </Button>{" "}
+        </Button>
         |
-        {!isEditing ? (
-          <Button sx={{ p: 1, fontSize: 10 }} onClick={handleEdit}>
+        <div>
+          <Button sx={{ p: 1, fontSize: 10 }} onClick={handleOpenModal}>
             Edit
           </Button>
-        ) : (
-          <Button sx={{ p: 1, fontSize: 10 }} onClick={handleSave}>
-            Save
-          </Button>
-        )}{" "}
+
+          <Modal
+            open={openModal}
+            onClose={handleCloseModal}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Card
+              sx={{
+                p: 3,
+                width: 500,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+                <Stack spacing={2}>
+                  <FTextField
+                    // content of the Post
+                    name="content"
+                    multiline
+                    fullWidth
+                    rows={4}
+                    placeholder={post.content}
+                    sx={{
+                      "& fieldset": {
+                        borderWidth: `1px !important`,
+                        borderColor: alpha("#919EAB", 0.32),
+                      },
+                    }}
+                  />
+
+                  {/* UPLOAD A FILE: btn choose File  */}
+                  <FUploadImage
+                    // upload image with the Post
+                    name="image"
+                    accept="image/*"
+                    maxSize={3145728}
+                    onDrop={handleDrop}
+                  />
+
+                  <Box
+                    // button submit a Post
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "flex-end",
+                    }}
+                  >
+                    <LoadingButton
+                      // loading...
+                      type="submit"
+                      variant="contained"
+                      size="small"
+                      loading={isSubmitting || isLoading}
+                    >
+                      Edit
+                    </LoadingButton>
+                  </Box>
+                </Stack>
+              </FormProvider>
+            </Card>
+          </Modal>
+        </div>
       </Popover>
 
-      {/* edit post */}
+      {/* content */}
       <Stack spacing={2} sx={{ p: 3 }}>
         <Typography>{post.content}</Typography>
-        {isEditing && (
-          <input
-            type="text"
-            value={editedContent}
-            onChange={handleContentChange}
-            onMouseDown={handleInputMouseDown}
-          />
-        )}
 
+        {/* media */}
         {post.image && (
           <Box
             sx={{
@@ -199,15 +250,6 @@ function PostCard({ post }) {
             }}
           >
             <img src={post.image} alt="post" />
-
-            {/* edit image */}
-            <FUploadImage
-              // upload image with the Post
-              name="image"
-              accept="image/*"
-              maxSize={3145728}
-              onDrop={handleDrop}
-            />
           </Box>
         )}
 
