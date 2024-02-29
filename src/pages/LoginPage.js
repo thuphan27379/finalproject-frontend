@@ -64,7 +64,7 @@ function LoginPage() {
     }
   };
 
-  //render to HTML
+  // render to HTML
   return (
     <Container maxWidth="xs">
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
@@ -115,6 +115,7 @@ function LoginPage() {
             Forgot password?
           </Link>
         </Stack>
+
         {/* btn submit */}
         <LoadingButton
           fullWidth

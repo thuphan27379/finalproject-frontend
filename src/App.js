@@ -10,9 +10,10 @@ import Grid from "@mui/material/Grid";
 
 import Router from "./routes";
 import { AuthProvider } from "./contexts/AuthContext"; //access token
-// import ThemeProvider, { theme } from "./theme";
+import ThemeProvider, { theme } from "./theme";
 // import Navbar from "./components/NavBar/Navbar";
 // import { dashboardTheme } from "./dashboardTheme";
+import { createTheme } from "@mui/material/styles";
 
 // CAN SUA THEME CUSTOMIZE, LAM DARK/LIGHT
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
@@ -21,22 +22,22 @@ function App() {
   const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext);
 
-  // const themeCustom = createTheme({
-  //   palette: {
-  //     primary: {
-  //       main: "#B31942 ", //700
-  //       light: "#e65e7a", //300
-  //       dark: "#7c093a",
-  //       contrastText: "#fbe3e7",
-  //     },
-  //     secondary: {
-  //       main: "#0A3161", //800
-  //       light: "#476390", //400
-  //       dark: "#04214a",
-  //       contrastText: "#e5e8ef",
-  //     },
-  //   },
-  // });
+  const themeCustom = createTheme({
+    palette: {
+      primary: {
+        main: "#B31942 ", //700
+        light: "#e65e7a", //300
+        dark: "#7c093a",
+        contrastText: "#fbe3e7",
+      },
+      secondary: {
+        main: "#0A3161", //800
+        light: "#476390", //400
+        dark: "#04214a",
+        contrastText: "#e5e8ef",
+      },
+    },
+  });
 
   //
   // return (
@@ -97,15 +98,15 @@ export default function ToggleColorMode() {
     <div>
       <Grid container>
         {/* <ColorModeContext.Provider value={colorMode}> */}
-        {/* <ThemeProvider> */}
-        <AuthProvider>
-          <BrowserRouter>
-            <CssBaseline enableColorScheme />
-            <Router />
-            <App />
-          </BrowserRouter>
-        </AuthProvider>
-        {/* </ThemeProvider> */}
+        <ThemeProvider>
+          <AuthProvider>
+            <BrowserRouter>
+              <CssBaseline enableColorScheme />
+              <Router />
+              <App />
+            </BrowserRouter>
+          </AuthProvider>
+        </ThemeProvider>
         {/* </ColorModeContext.Provider> */}
       </Grid>
     </div>

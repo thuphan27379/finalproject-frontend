@@ -20,10 +20,11 @@ import { Badge } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import PublicIcon from "@mui/icons-material/Public";
+import { Link } from "react-router-dom";
 
 // https://mui.com/material-ui/react-app-bar/
-const pages = ["About us", "Projects", "Domains", "Startup", "Blog"];
-const settings = ["Account", "Setting", "Dashboard", "Logout"];
+const pages = ["About us", "Projects", "Domains", "Startup", "Community"];
+const settings = ["My Domains", "My Profile", "My Group", "Setting", "Logout"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -95,15 +96,14 @@ function ResponsiveAppBar() {
       maxWidth="100%"
       sx={{
         backgroundColor: "#0A3161",
-        // width: "1024px",
         zIndex: (theme) => theme.zIndex.drawer + 1,
       }}
     >
       {/*  */}
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* logo here */}
-          <IconButton sx={{ p: 0 }}>
+          {/* logo here, link to homepage */}
+          <IconButton sx={{ p: 0, mr: 2 }}>
             <Avatar alt="" src="./logo.png" />
           </IconButton>
           <Typography
@@ -152,13 +152,26 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: "block", md: "none" },
-                upperCase,
+                display: {
+                  xs: "block",
+                  md: "none",
+                  textTransform: "capitalize",
+                },
               }}
             >
+              {/* capitalize case is not work?*/}
+              {/* link to page */}
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center uppercase" sx={upperCase}>
+                <MenuItem
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  component={Link}
+                >
+                  <Typography
+                    textAlign="center"
+                    sx={{ textTransform: "capitalize" }}
+                    to="/"
+                  >
                     {page}
                   </Typography>
                 </MenuItem>
@@ -166,6 +179,7 @@ function ResponsiveAppBar() {
             </Menu>
           </Box>
 
+          {/* ??? */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
@@ -178,28 +192,31 @@ function ResponsiveAppBar() {
             ))}
           </Box>
 
-          {/* search input  */}
-          <Search>
+          {/* search input, width!  */}
+          <Search sx={{ width: "200" }}>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              placeholder="Search"
+              placeholder="Search..."
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
 
+          {/* icon & avt */}
           <IconButton
             size="large"
-            aria-label="show 4 new mails"
+            aria-label="switch dark/light modes"
             color="inherit"
+            title="Dark Mode"
           >
             <LightModeIcon />
           </IconButton>
           <IconButton
             size="large"
-            aria-label="show 17 new notifications"
+            aria-label="switch languages English/ Vietnamese"
             color="inherit"
+            title="EN-VN"
           >
             <PublicIcon />
           </IconButton>
@@ -209,7 +226,9 @@ function ResponsiveAppBar() {
             {/* thay avatar account vo */}
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="" src="./logo.png" />
+                <Badge>
+                  <Avatar alt="Home" src="./logo.png" />
+                </Badge>
               </IconButton>
             </Tooltip>
 

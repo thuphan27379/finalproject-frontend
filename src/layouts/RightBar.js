@@ -13,7 +13,8 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 
 // bo left border right bar?!?!
-// bo cac icon phia truoc menu
+// bo cac icon phia truoc menu DONE
+// blogPage: all company tabs
 const drawerWidth = 240;
 
 export default function RightBar() {
