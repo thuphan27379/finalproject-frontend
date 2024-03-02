@@ -11,13 +11,10 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-// import AdbIcon from "@mui/icons-material/Adb";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase"; //
 import SearchIcon from "@mui/icons-material/Search"; //
-import { upperCase } from "lodash";
 import { Badge } from "@mui/material";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import PublicIcon from "@mui/icons-material/Public";
 import { Link } from "react-router-dom";
@@ -97,6 +94,7 @@ function ResponsiveAppBar() {
       sx={{
         backgroundColor: "#0A3161",
         zIndex: (theme) => theme.zIndex.drawer + 1,
+        boxShadow: "none",
       }}
     >
       {/*  */}
@@ -155,11 +153,9 @@ function ResponsiveAppBar() {
                 display: {
                   xs: "block",
                   md: "none",
-                  textTransform: "capitalize",
                 },
               }}
             >
-              {/* capitalize case is not work?*/}
               {/* link to page */}
               {pages.map((page) => (
                 <MenuItem
@@ -169,7 +165,7 @@ function ResponsiveAppBar() {
                 >
                   <Typography
                     textAlign="center"
-                    sx={{ textTransform: "capitalize" }}
+                    sx={{ textTransform: "none" }}
                     to="/"
                   >
                     {page}
@@ -185,7 +181,12 @@ function ResponsiveAppBar() {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
+                sx={{
+                  my: 2,
+                  color: "white",
+                  display: "block",
+                  textTransform: "none",
+                }}
               >
                 {page}
               </Button>
@@ -227,7 +228,11 @@ function ResponsiveAppBar() {
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Badge>
-                  <Avatar alt="Home" src="./logo.png" />
+                  <Avatar
+                    alt="Home"
+                    src="./logo.png"
+                    sx={{ width: 30, height: 30 }}
+                  />
                 </Badge>
               </IconButton>
             </Tooltip>

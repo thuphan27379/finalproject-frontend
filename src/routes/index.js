@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Routes, Route } from "react-router-dom";
 
-// import BlankLayout from "../layouts/BlankLayout"; // bo
 import BlogPage from "../pages/BlogPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
@@ -14,38 +13,45 @@ import HomePage from "../pages/HomePage";
 import AdminPage from "../pages/AdminPage";
 
 // INDEX OF ALL ROUTES = connect all layouts & pages together
-// sua lai: chi account page & admin page moi can AuthRequire
 function Router() {
   return (
     <Routes>
-      {/* public, index: landing page */}
-      <Route element={<HomeLayout />}>
+      {/* public */}
+      <Route path="/" element={<HomeLayout />}>
         <Route index path="/home" element={<HomePage />} />
         <Route index path="/aboutus" element={<HomePage />} />
         <Route index path="/projects" element={<HomePage />} />
         <Route index path="/domains" element={<HomePage />} />
         <Route index path="/startup" element={<HomePage />} />
-        {/*  */}
+        {/* CODERCOMM */}
+        {/* GROUP & CHAT ? */}
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/user/:userId" element={<UserProfilePage />} />
-      </Route>
-      {/* login/signup MODAL POPUP*/}
-      <Route element={<HomeLayout />}>
+        {/* login/signup MODAL POPUP*/}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="*" element={<NotFoundPage />} />
+        {/* FORGOT PW */}
       </Route>
+
       {/* login require */}
-      <Route
-        path="/"
-        element={
-          // <AuthRequire>
-          <HomeLayout />
-          // </AuthRequire>
-        }
-      >
-        <Route path="/account" element={<AccountPage />} />
-        <Route path="/admin" element={<AdminPage />} />
+      <Route path="/" element={<HomeLayout />}>
+        <Route
+          path="/account"
+          element={
+            <AuthRequire>
+              <AccountPage />
+            </AuthRequire>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <AuthRequire>
+              <AdminPage />
+            </AuthRequire>
+          }
+        />
       </Route>
     </Routes>
   );

@@ -16,7 +16,6 @@ import FriendRequests from "../features/friend/FriendRequests";
 import FriendList from "../features/friend/FriendList";
 import OutgoingSents from "../features/friend/OutgoingSent";
 
-// giong FB
 //user profile page: bo cover img, tabs
 const TabsWrapperStyle = styled("div")(({ theme }) => ({
   // MUI styled() for cover

@@ -26,7 +26,7 @@ User story:
 
 Site - Home:  
 Get all information of company. (about us, domains, projects...)
-live chat with admin
+live chat with admin ?!?!
 
 Startup Community-blog:
 

@@ -5,7 +5,7 @@ import MainFooter from "./MainFooter";
 import MainHeader from "./MainHeader";
 import AlertMsg from "../components/AlertMsg";
 
-//
+// DELETE
 function MainLayout() {
   return (
     <Stack sx={{ minHeight: "100vh" }}>
@@ -13,10 +13,10 @@ function MainLayout() {
 
       <AlertMsg />
       {/* react toastify */}
-
-      <Outlet />
-
-      <Box sx={{ flexGrow: 1 }} />
+      <div style={{ maxWidth: "calc(100vw - 480px)" }}>
+        <Outlet />
+      </div>
+      {/* <Box sx={{ flexGrow: 1 }} /> */}
 
       <MainFooter />
     </Stack>

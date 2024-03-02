@@ -1,26 +1,21 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
-import IconButton from "@mui/material/IconButton";
-import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
 import Grid from "@mui/material/Grid";
 
 import Router from "./routes";
 import { AuthProvider } from "./contexts/AuthContext"; //access token
-import ThemeProvider, { theme } from "./theme";
-// import Navbar from "./components/NavBar/Navbar";
+// import ThemeProvider, { theme } from "./theme";
 // import { dashboardTheme } from "./dashboardTheme";
 import { createTheme } from "@mui/material/styles";
 
-// CAN SUA THEME CUSTOMIZE, LAM DARK/LIGHT
+// CAN SUA THEME CUSTOMIZE, LAM DARK/LIGHT, RESPONSIVE
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 function App() {
   const theme = useTheme();
-  const colorMode = React.useContext(ColorModeContext);
+  // const colorMode = React.useContext(ColorModeContext);
 
   const themeCustom = createTheme({
     palette: {
@@ -98,15 +93,15 @@ export default function ToggleColorMode() {
     <div>
       <Grid container>
         {/* <ColorModeContext.Provider value={colorMode}> */}
-        <ThemeProvider>
-          <AuthProvider>
-            <BrowserRouter>
-              <CssBaseline enableColorScheme />
-              <Router />
-              <App />
-            </BrowserRouter>
-          </AuthProvider>
-        </ThemeProvider>
+        {/* <ThemeProvider> */}
+        <AuthProvider>
+          <BrowserRouter>
+            <CssBaseline enableColorScheme />
+            <Router />
+            <App />
+          </BrowserRouter>
+        </AuthProvider>
+        {/* </ThemeProvider> */}
         {/* </ColorModeContext.Provider> */}
       </Grid>
     </div>

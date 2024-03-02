@@ -5,7 +5,7 @@ import React from "react";
 import Logo from "../components/Logo";
 
 // login/signup
-// delete blank layout
+// delete
 function BlankLayout() {
   return (
     <Stack minHeight="100vh" justifyContent="center" alignItems="center">

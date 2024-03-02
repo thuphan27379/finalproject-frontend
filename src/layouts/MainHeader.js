@@ -12,7 +12,7 @@ import { useNavigate, Link as RouterLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import Logo from "../components/Logo";
 
-//
+// DELETE
 function MainHeader() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -130,7 +130,7 @@ function MainHeader() {
               onClick={handleProfileMenuOpen}
               src={user.avatarUrl}
               alt={user.name}
-              sx={{ width: 32, height: 32 }}
+              sx={{ width: 20, height: 20 }}
             />
           </Box>
         </Toolbar>

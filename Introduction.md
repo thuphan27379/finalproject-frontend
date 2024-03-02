@@ -160,15 +160,14 @@ You can choose up to 3 elective features from the list below to make your app co
 
 [Untitled Database](https://www.notion.so/c1bb4747653e4118ac6f47901f393854?pvs=21)
 
-<aside>
-?? Features with a *blank page* icon, like ***Forget & Reset Password,*** are simple enough that we encourage you to come up with the solution yourself.
+1.  ?? Features with a _blank page_ icon, like **_Forget & Reset Password,_** are simple enough that we encourage you to come up with the solution yourself.
 
-Features with _2 lines_ in the icon, like **_Simple Chat between users,_** are the more challenging ones that include suggestion on how to approach them. You can click on those page to see more.
+2.  Features with _2 lines_ in the icon, like **_Simple Chat between users,_** are the more challenging ones that include suggestion on how to approach them. You can click on those page to see more.
 
 https://firebase.google.com/
 https://www.freecodecamp.org/news/building-a-real-time-chat-app-with-reactjs-and-firebase/
 
-</aside>
+3.
 
 # [Elective] Create, join, and post in groups based on interests or topics
 
