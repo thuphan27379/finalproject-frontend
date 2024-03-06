@@ -11,6 +11,7 @@ import UserProfilePage from "../pages/UserProfilePage";
 import HomeLayout from "../layouts/HomeLayout";
 import HomePage from "../pages/HomePage";
 import AdminPage from "../pages/AdminPage";
+import BlankLayout from "../layouts/BlankLayout";
 
 // INDEX OF ALL ROUTES = connect all layouts & pages together
 function Router() {
@@ -23,15 +24,21 @@ function Router() {
         <Route index path="/projects" element={<HomePage />} />
         <Route index path="/domains" element={<HomePage />} />
         <Route index path="/startup" element={<HomePage />} />
+        {/* <Route path="*" element={<NotFoundPage />} /> */}
+
         {/* CODERCOMM */}
-        {/* GROUP & CHAT ? */}
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/user/:userId" element={<UserProfilePage />} />
-        {/* login/signup MODAL POPUP*/}
+        {/* <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} /> */}
+        {/* FORGOT PW */}
+      </Route>
+
+      {/* login/signup MODAL POPUP OR BLANK LAYOUT */}
+      <Route path="/" element={<BlankLayout />}>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="*" element={<NotFoundPage />} />
-        {/* FORGOT PW */}
       </Route>
 
       {/* login require */}

@@ -5,7 +5,8 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 
-//
+// MOVE TO LEFTBAR
+// 3rd a card show info about social link, on the left
 const IconStyle = styled(Box)(({ theme }) => ({
   width: 20,
   height: 20,
@@ -14,7 +15,6 @@ const IconStyle = styled(Box)(({ theme }) => ({
   marginRight: theme.spacing(2),
 }));
 
-// a card show info about social link, on the left
 function ProfileSocialInfo({ profile }) {
   const { facebookLink, instagramLink, linkedinLink, twitterLink } = profile;
 

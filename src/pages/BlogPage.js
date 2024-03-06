@@ -10,13 +10,14 @@ import { capitalCase } from "change-case";
 
 import useAuth from "../hooks/useAuth";
 import Profile from "../features/user/Profile";
-import ProfileCover from "../features/user/ProfileCover";
+// import ProfileCover from "../features/user/ProfileCover";
 import AddFriend from "../features/friend/AddFriend";
 import FriendRequests from "../features/friend/FriendRequests";
 import FriendList from "../features/friend/FriendList";
 import OutgoingSents from "../features/friend/OutgoingSent";
 
-//user profile page: bo cover img, tabs
+// CODERCOMM
+// user profile page: bo cover img, tabs..
 const TabsWrapperStyle = styled("div")(({ theme }) => ({
   // MUI styled() for cover
   zIndex: 9,
@@ -45,6 +46,13 @@ function BlogPage() {
   };
   //
   const PROFILE_TABS = [
+    // Wall: postForm, postList, comment & reaction
+    // Friend: user list for send request, friend list for delete friend
+    // Request: incoming list for accept, outgoing list for cancel
+    // Group:
+    // Chat:
+    // Profile: show own info & enterprise
+    // Setting: update profile
     {
       value: "profile",
       icon: <AccountBoxIcon sx={{ fontSize: 24 }} />,
@@ -81,6 +89,7 @@ function BlogPage() {
   // tu tren xuong: postForm -> postList
   return (
     <Container>
+      {/* tab bo o trong Card? */}
       <Card
         sx={{
           mb: 3,
@@ -88,8 +97,8 @@ function BlogPage() {
           position: "relative",
         }}
       >
-        {/* cover img */}
-        <ProfileCover profile={user} />
+        {/* avt & cover img */}
+        {/* <ProfileCover profile={user} /> */}
 
         {/* tabs */}
         <TabsWrapperStyle>

@@ -1,6 +1,8 @@
 import { Card, Stack, Typography, Divider } from "@mui/material";
 import { fNumber } from "../../utils/numberFormat";
 
+// delete, will show how many friend in friendlist
+// 1st show how many posts and friends
 // use mui library to make a card for show info of the account
 function ProfileScorecard({ profile }) {
   const { postCount, friendCount } = profile;

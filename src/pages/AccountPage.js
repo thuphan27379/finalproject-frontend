@@ -7,6 +7,7 @@ import { capitalCase } from "change-case";
 import AccountGeneral from "../features/user/AccountGeneral";
 import AccountSocialLinks from "../features/user/AccountSocialLinks";
 
+// CODERCOMM
 // for updating account info of user
 function AccountPage() {
   const [currentTab, setCurrentTab] = useState("general");
@@ -50,7 +51,7 @@ function AccountPage() {
       </Tabs>
 
       <Box sx={{ mb: 5 }} />
-{/* component */}
+      {/* component */}
       {ACCOUNT_TABS.map((tab) => {
         const isMatched = tab.value === currentTab;
         return isMatched && <Box key={tab.value}>{tab.component}</Box>;

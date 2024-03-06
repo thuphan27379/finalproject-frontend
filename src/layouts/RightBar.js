@@ -7,8 +7,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 
-// LINK TO PAGE
+// homepage: domain..
 // blogPage: all company tabs
+// LINK TO PAGE
 const drawerWidth = 240;
 
 export default function RightBar() {
@@ -33,7 +34,7 @@ export default function RightBar() {
         variant="permanent"
         anchor="right"
       >
-        <List>
+        <List sx={{ color: "#0A3161" }}>
           {[
             "Startup Support Program",
             "Our Projects",
@@ -50,10 +51,6 @@ export default function RightBar() {
           ))}
         </List>
       </Drawer>
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
-      ></Box>
     </Box>
   );
 }

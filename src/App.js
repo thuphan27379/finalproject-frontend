@@ -7,10 +7,10 @@ import Grid from "@mui/material/Grid";
 import Router from "./routes";
 import { AuthProvider } from "./contexts/AuthContext"; //access token
 // import ThemeProvider, { theme } from "./theme";
-// import { dashboardTheme } from "./dashboardTheme";
 import { createTheme } from "@mui/material/styles";
 
 // CAN SUA THEME CUSTOMIZE, LAM DARK/LIGHT, RESPONSIVE
+// toggle mode btn
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 function App() {

@@ -18,7 +18,8 @@ import * as Yup from "yup";
 import useAuth from "../hooks/useAuth";
 import { FormProvider, FTextField } from "../components/form";
 
-//
+// CODERCOMM
+// blank layout
 const RegisterSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),

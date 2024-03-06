@@ -4,11 +4,11 @@ import { useParams } from "react-router-dom";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import Profile from "../features/user/Profile";
-import ProfileCover from "../features/user/ProfileCover";
+// import ProfileCover from "../features/user/ProfileCover";
 import { getUser } from "../features/user/userSlice";
 import LoadingScreen from "../components/LoadingScreen";
 
-//
+// CODERCOMM
 function UserProfilePage() {
   const params = useParams();
   const userId = params.userId;
@@ -40,7 +40,7 @@ function UserProfilePage() {
               position: "relative",
             }}
           >
-            {selectedUser && <ProfileCover profile={selectedUser} />}
+            {/* {selectedUser && <ProfileCover profile={selectedUser} />} */}
           </Card>
           {selectedUser && <Profile profile={selectedUser} />}
         </>

@@ -12,8 +12,7 @@ import useAuth from "../../hooks/useAuth";
 import { FormProvider, FTextField } from "../../components/form";
 import { updateUserProfile } from "./userSlice";
 
-// for update profile: edit social links
-//
+// for edit social links, where???
 const SOCIAL_LINKS = [
   {
     value: "facebookLink",
@@ -44,7 +43,7 @@ function AccountSocialLinks() {
     linkedinLink: user?.linkedinLink || "",
     twitterLink: user?.twitterLink || "",
   };
-  
+
   // form for editing
   const methods = useForm({
     defaultValues,
@@ -78,6 +77,7 @@ function AccountSocialLinks() {
             />
           ))}
 
+          {/* KHONG THAY O DAU */}
           <LoadingButton
             type="submit"
             variant="contained"

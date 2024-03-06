@@ -1,7 +1,8 @@
 import { Link as RouterLink } from "react-router-dom";
 import { Box, Button, Typography, Container } from "@mui/material";
 
-//
+// CODERCOMM
+// blank layout
 function NotFoundPage() {
   return (
     <Container sx={{ display: "flex", height: "100%", alignItems: "center" }}>

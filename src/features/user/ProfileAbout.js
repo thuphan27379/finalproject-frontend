@@ -4,6 +4,7 @@ import PinDropIcon from "@mui/icons-material/PinDrop";
 import EmailIcon from "@mui/icons-material/Email";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 
+// MOVE TO LEFTBAR
 //* icon */
 const IconStyle = styled(Box)(({ theme }) => ({
   width: 20,
@@ -13,6 +14,7 @@ const IconStyle = styled(Box)(({ theme }) => ({
   marginRight: theme.spacing(2),
 }));
 
+// 2nd About
 // show detail of profile, on the left
 function ProfileAbout({ profile }) {
   const { aboutMe, city, country, email, company } = profile;

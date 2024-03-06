@@ -18,7 +18,8 @@ import * as Yup from "yup";
 import { FCheckbox, FormProvider, FTextField } from "../components/form";
 import useAuth from "../hooks/useAuth";
 
-//
+// CODERCOMM
+// blank layout
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string().required("Password is required"),

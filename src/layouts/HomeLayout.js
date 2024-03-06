@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Box, Container, Stack } from "@mui/material";
+import { Box, Container, Grid, Stack } from "@mui/material";
 
 import AlertMsg from "../components/AlertMsg";
 import HomeHeader from "./HomeHeader";
@@ -8,45 +8,39 @@ import RightBar from "./RightBar";
 import MainFooter from "./MainFooter";
 
 // kiem tra width
+// MARGIN HAI BEN MAN HINH
 function HomeLayout() {
   return (
     <>
-      {/* <Box sx={{ display: "flex" }}>
-        <CssBaseline />
-        <HomeHeader />
+      <Container sx={{ ml: "16px", mr: "16px", background: "white" }}>
+        <Grid container spacing={3}>
+          <Stack sx={{ minHeight: "100vh", minWidth: "100vw" }}>
+            <Box position="sticky">
+              <HomeHeader />
+            </Box>
 
-        <main>
-          <LeftBar />
+            <AlertMsg />
+            {/* react toastify */}
 
-          <Outlet />
+            <Stack className="flex-row">
+              <Grid xs>
+                <LeftBar sx={{ width: "300px", background: "black" }} />
+              </Grid>
+              <Grid xs={6}>
+                <Outlet sx={{ width: "800px" }} />
+              </Grid>
+              <Grid xs>
+                <RightBar sx={{ width: "300px", background: "black" }} />
+              </Grid>
+            </Stack>
 
-          <RightBar />
-        </main>
-
-        <MainFooter />
-      </Box> */}
-
-      <Stack sx={{ minHeight: "100vh", minWidth: "100vw" }}>
-        <Box position="sticky">
-          <HomeHeader />
-        </Box>
-
-        <AlertMsg />
-        {/* react toastify */}
-
-        <Container className="flex-row">
-          {/* 3 thanh phan nay phai xep theo hang ngang */}
-          <LeftBar />
-
-          <Outlet />
-
-          <RightBar />
-        </Container>
-
-        <Box sx={{ flexGrow: 1 }} />
-
-        <MainFooter />
-      </Stack>
+            {/* <Box sx={{ flexGrow: 1 }} /> */}
+            <Box>
+              <MainFooter />
+            </Box>
+          </Stack>
+        </Grid>
+      </Container>
     </>
   );
 }

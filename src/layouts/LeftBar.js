@@ -7,13 +7,14 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 
+// homepage: company tabs
 // blogPage: blog tabs
 // LINK TO PAGE
 const drawerWidth = 240;
 
 export default function LeftBar() {
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", background: "black" }}>
       <CssBaseline />
       <Drawer
         sx={{
@@ -32,8 +33,9 @@ export default function LeftBar() {
         }}
         variant="permanent"
         anchor="left"
+        backgroundColor="black" //
       >
-        <List>
+        <List sx={{ color: "#0A3161", fontWeight: "800" }}>
           {[
             "Startup Support Program",
             "Our Projects",
@@ -50,10 +52,6 @@ export default function LeftBar() {
           ))}
         </List>
       </Drawer>
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, bgcolor: "background.default", p: 3 }}
-      ></Box>
     </Box>
   );
 }
