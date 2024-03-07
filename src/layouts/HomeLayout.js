@@ -11,36 +11,56 @@ import MainFooter from "./MainFooter";
 // MARGIN HAI BEN MAN HINH
 function HomeLayout() {
   return (
+    // <>
+    //   <Container sx={{ ml: "16px", mr: "16px", background: "white" }}>
+    //     <Grid container spacing={3}>
+    //       <Stack sx={{ minHeight: "100vh", minWidth: "100vw" }}>
+    //         <Box position="sticky">
+    //           <HomeHeader />
+    //         </Box>
+
+    //         <AlertMsg />
+    //         {/* react toastify */}
+
+    //         <Stack className="flex-row">
+    //           <Grid xs>
+    //             <LeftBar sx={{ width: "300px", background: "black" }} />
+    //           </Grid>
+    //           <Grid xs={6}>
+    //             <Outlet sx={{ width: "800px" }} />
+    //           </Grid>
+    //           <Grid xs>
+    //             <RightBar sx={{ width: "300px", background: "black" }} />
+    //           </Grid>
+    //         </Stack>
+
+    //         {/* <Box sx={{ flexGrow: 1 }} /> */}
+    //         <Box>
+    //           <MainFooter />
+    //         </Box>
+    //       </Stack>
+    //     </Grid>
+    //   </Container>
+    // </>
     <>
-      <Container sx={{ ml: "16px", mr: "16px", background: "white" }}>
-        <Grid container spacing={3}>
-          <Stack sx={{ minHeight: "100vh", minWidth: "100vw" }}>
-            <Box position="sticky">
-              <HomeHeader />
-            </Box>
+      <Stack sx={{ minHeight: "120vh" }}>
+        <HomeHeader />
+        <Box
+          sx={{
+            border: "1px solid red",
+            display: "flex",
+            justifyContent: "space-between",
+            flexGrow: 1,
+          }}
+        >
+          {/* <LeftBar /> */}
 
-            <AlertMsg />
-            {/* react toastify */}
+          {/* <RightBar /> */}
+        </Box>
 
-            <Stack className="flex-row">
-              <Grid xs>
-                <LeftBar sx={{ width: "300px", background: "black" }} />
-              </Grid>
-              <Grid xs={6}>
-                <Outlet sx={{ width: "800px" }} />
-              </Grid>
-              <Grid xs>
-                <RightBar sx={{ width: "300px", background: "black" }} />
-              </Grid>
-            </Stack>
-
-            {/* <Box sx={{ flexGrow: 1 }} /> */}
-            <Box>
-              <MainFooter />
-            </Box>
-          </Stack>
-        </Grid>
-      </Container>
+        <Outlet />
+        <MainFooter />
+      </Stack>
     </>
   );
 }

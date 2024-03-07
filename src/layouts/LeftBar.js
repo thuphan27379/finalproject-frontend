@@ -14,9 +14,9 @@ const drawerWidth = 240;
 
 export default function LeftBar() {
   return (
-    <Box sx={{ display: "flex", background: "black" }}>
-      <CssBaseline />
-      <Drawer
+    <Box sx={{ width: "25vw" }}>
+      {/* <CssBaseline /> */}
+      {/* <Drawer
         sx={{
           width: drawerWidth,
           flexShrink: 0,
@@ -34,24 +34,24 @@ export default function LeftBar() {
         variant="permanent"
         anchor="left"
         backgroundColor="black" //
-      >
-        <List sx={{ color: "#0A3161", fontWeight: "800" }}>
-          {[
-            "Startup Support Program",
-            "Our Projects",
-            "Cooperate with us",
-            "Domains for sale",
-            "Your Domains",
-            "Donate us",
-          ].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
+      > */}
+      <List sx={{ color: "#0A3161", fontWeight: "800" }}>
+        {[
+          "Startup Support Program",
+          "Our Projects",
+          "Cooperate with us",
+          "Domains for sale",
+          "Your Domains",
+          "Donate us",
+        ].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+      {/* </Drawer> */}
     </Box>
   );
 }

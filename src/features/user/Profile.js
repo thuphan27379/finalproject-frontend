@@ -3,8 +3,8 @@ import { Grid, Stack } from "@mui/material";
 import useAuth from "../../hooks/useAuth";
 // import ProfileAbout from "./ProfileAbout";
 // import ProfileSocialInfo from "./ProfileSocialInfo";
-import PostForm from "../post/PostForm";
 // import ProfileScorecard from "./ProfileScorecard";
+import PostForm from "../post/PostForm";
 import PostList from "../post/PostList";
 
 // show own info & enterprise

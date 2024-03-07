@@ -14,9 +14,9 @@ const drawerWidth = 240;
 
 export default function RightBar() {
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <Drawer
+    <Box sx={{ width: "25vw" }}>
+      {/* <CssBaseline /> */}
+      {/* <Drawer
         sx={{
           width: drawerWidth,
           flexShrink: 0,
@@ -33,24 +33,24 @@ export default function RightBar() {
         }}
         variant="permanent"
         anchor="right"
-      >
-        <List sx={{ color: "#0A3161" }}>
-          {[
-            "Startup Support Program",
-            "Our Projects",
-            "Cooperate with us",
-            "Domains for sale",
-            "Your Domains",
-            "Donate us",
-          ].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
+      > */}
+      <List sx={{ color: "#0A3161" }}>
+        {[
+          "Startup Support Program",
+          "Our Projects",
+          "Cooperate with us",
+          "Domains for sale",
+          "Your Domains",
+          "Donate us",
+        ].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+      {/* </Drawer> */}
     </Box>
   );
 }
