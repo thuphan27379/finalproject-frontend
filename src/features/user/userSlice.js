@@ -25,7 +25,7 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
-    //update User Profile
+    // update User Profile
     updateUserProfileSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
@@ -42,8 +42,6 @@ const slice = createSlice({
     },
   },
 });
-
-export default slice.reducer;
 
 // update User Profile
 export const updateUserProfile =
@@ -106,7 +104,7 @@ export const getUser = (id) => async (dispatch) => {
   }
 };
 
-//  get user profile
+// get user profile
 export const getCurrentUserProfile = () => async (dispatch) => {
   dispatch(slice.actions.startLoading());
   try {
@@ -116,3 +114,5 @@ export const getCurrentUserProfile = () => async (dispatch) => {
     dispatch(slice.actions.hasError(error));
   }
 };
+
+export default slice.reducer;

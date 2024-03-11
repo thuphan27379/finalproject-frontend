@@ -5,12 +5,6 @@ import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
 import LeftBar from "../layouts/LeftBar";
 import RightBar from "../layouts/RightBar";
 
-// MyCompany
-// const list = [
-//   { title: "A", content: "Content for A" },
-//   { title: "B", content: "Content for B" },
-// ];
-
 // data list
 const rows: GridRowsProp = [
   { id: 1, col1: "Hello", col2: "World" },
@@ -26,10 +20,20 @@ const columns: GridColDef[] = [
 // Outlet
 const HomePage = () => {
   return (
-    <Container sx={{ display: "flex", justifyContent: "space-evenly" }}>
-      <LeftBar />
+    <Container
+      sx={{
+        display: "flex",
+        justifyContent: "space-evenly",
+        maxWidth: "unset!important",
+      }}
+    >
+      {/* <LeftBar /> */}
 
-      <Grid marginTop={"68px"} maxWidth={"60vw"} marginX={"auto"}>
+      <Grid
+        // marginTop={"68px"}
+        maxWidth={"60vw"}
+        marginX={"auto"}
+      >
         <div>Home Page & Blog Page</div>
         {/* {list.map((item, index) => (
         <div key={index} style={{ border: "1px solid #ccc" }}>
@@ -161,7 +165,7 @@ const HomePage = () => {
         </div>
       </Grid>
 
-      <RightBar />
+      {/* <RightBar /> */}
     </Container>
   );
 };

@@ -1,7 +1,12 @@
+import { Container } from "@mui/material";
 import React from "react";
 
 function Projects() {
-  return <div>Projects</div>;
+  return (
+    <Container>
+      <div>Projects</div>
+    </Container>
+  );
 }
 
 export default Projects;

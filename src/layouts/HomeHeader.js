@@ -5,22 +5,26 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu"; //
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { styled, alpha } from "@mui/material/styles";
-import InputBase from "@mui/material/InputBase"; //
-import SearchIcon from "@mui/icons-material/Search"; //
-import { Badge } from "@mui/material";
+import InputBase from "@mui/material/InputBase";
+import SearchIcon from "@mui/icons-material/Search";
+import { Badge, Stack } from "@mui/material";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import PublicIcon from "@mui/icons-material/Public";
-import { Link } from "react-router-dom";
 
-// https://mui.com/material-ui/react-app-bar/
-const pages = ["About us", "Projects", "Domains", "Startup", "Community"];
+const pages = [
+  { label: "About us", path: "aboutus" },
+  { label: "Projects", path: "projects" },
+  { label: "Domains", path: "domains" },
+  { label: "Startup", path: "startup" },
+  { label: "Community", path: "community" },
+];
+
 const settings = ["My Domains", "My Profile", "My Group", "Setting", "Logout"];
 
 function ResponsiveAppBar() {
@@ -102,27 +106,35 @@ function ResponsiveAppBar() {
       {/*  */}
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* logo here, link to homepage */}
-          <IconButton sx={{ p: 0, mr: 2 }}>
-            <Avatar alt="" src="./logo.png" />
-          </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
+          {/* logo, link to homepage */}
+          <Stack
+            direction="row"
             sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "#B31942 ",
-              textDecoration: "none",
+              paddingLeft: "50px",
+              alignItems: "center",
             }}
           >
-            MyCompany
-          </Typography>
+            <IconButton sx={{ p: 0, mr: 2 }}>
+              <Avatar alt="" src="./logo.png" />
+            </IconButton>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="#app-bar-with-responsive-menu"
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "#B31942 ",
+                textDecoration: "none",
+              }}
+            >
+              MyCompany
+            </Typography>
+          </Stack>
 
           {/* main menu */}
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
@@ -136,80 +148,95 @@ function ResponsiveAppBar() {
                   display: "block",
                   textTransform: "none",
                 }}
-                to="/"
+                to={`/${page.path}`}
               >
-                {page}
+                {page.label}
               </Button>
             ))}
           </Box>
 
           {/* search input, width!  */}
-          <Search sx={{ width: "300" }}>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search..."
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
+          <Stack>
+            <Search sx={{ width: "300px" }}>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search..."
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
+          </Stack>
 
           {/* icon & avt */}
-          <IconButton
-            size="large"
-            aria-label="switch dark/light modes"
-            color="inherit"
-            title="Dark Mode"
+          <Stack
+            direction="row"
+            sx={{
+              alignItems: "center",
+              justifyContent: "space-evenly",
+              paddingLeft: "20px",
+              paddingRight: "50px",
+            }}
           >
-            <LightModeIcon />
-          </IconButton>
-          <IconButton
-            size="large"
-            aria-label="switch languages English/ Vietnamese"
-            color="inherit"
-            title="EN-VN"
-          >
-            <PublicIcon />
-          </IconButton>
-
-          {/* menu account  */}
-          <Box sx={{ flexGrow: 0 }}>
-            {/* thay avatar account vo */}
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Badge>
-                  <Avatar
-                    alt="Home"
-                    src="./logo.png"
-                    sx={{ width: 30, height: 30 }}
-                  />
-                </Badge>
-              </IconButton>
-            </Tooltip>
-
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+            <IconButton
+              size="large"
+              aria-label="switch dark/light modes"
+              color="inherit"
+              title="Dark Mode"
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+              <LightModeIcon />
+            </IconButton>
+            <IconButton
+              size="large"
+              aria-label="switch languages English/ Vietnamese"
+              color="inherit"
+              title="EN-VN"
+            >
+              <PublicIcon />
+            </IconButton>
+
+            {/* avt account & menu  */}
+            <Box sx={{ flexGrow: 0 }}>
+              {/* thay avatar account vo */}
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Badge>
+                    <Avatar
+                      alt="Home"
+                      src="./logo.png"
+                      sx={{
+                        width: "30px",
+                        height: "30px",
+                      }}
+                    />
+                  </Badge>
+                </IconButton>
+              </Tooltip>
+
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting) => (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+          </Stack>
         </Toolbar>
       </Container>
     </AppBar>

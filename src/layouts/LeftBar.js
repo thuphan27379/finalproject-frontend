@@ -14,7 +14,7 @@ const drawerWidth = 240;
 
 export default function LeftBar() {
   return (
-    <Box sx={{ width: "25vw" }}>
+    <Box sx={{ width: "25vw", marginTop: "90px" }}>
       {/* <CssBaseline /> */}
       {/* <Drawer
         sx={{

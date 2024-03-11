@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { Box, Container, Grid, Stack } from "@mui/material";
+import { Box, Container, Stack } from "@mui/material";
 
 import AlertMsg from "../components/AlertMsg";
 import HomeHeader from "./HomeHeader";
@@ -43,24 +43,33 @@ function HomeLayout() {
     //   </Container>
     // </>
     <>
-      <Stack sx={{ minHeight: "120vh" }}>
+      <Container sx={{ minHeight: "120vh", marginX: "auto" }}>
         <HomeHeader />
+
         <Box
           sx={{
-            border: "1px solid red",
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "space-evenly",
             flexGrow: 1,
+            maxWidth: "unset",
+            // minWidth: "100vw",
+            paddingLeft: "60px",
           }}
         >
-          {/* <LeftBar /> */}
-
-          {/* <RightBar /> */}
+          <LeftBar />
+          <div
+            className="outlet-wrapper"
+            style={{ marginTop: "90px", width: "60vw" }}
+          >
+            <Outlet />
+          </div>
+          <RightBar />
         </Box>
 
-        <Outlet />
+        <AlertMsg />
+
         <MainFooter />
-      </Stack>
+      </Container>
     </>
   );
 }

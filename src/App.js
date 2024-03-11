@@ -3,11 +3,11 @@ import { BrowserRouter } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useTheme } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
+import { createTheme } from "@mui/material/styles";
 
 import Router from "./routes";
 import { AuthProvider } from "./contexts/AuthContext"; //access token
 // import ThemeProvider, { theme } from "./theme";
-import { createTheme } from "@mui/material/styles";
 // import theme from "./theme.js";
 
 // CAN SUA THEME CUSTOMIZE, LAM DARK/LIGHT, RESPONSIVE

@@ -12,29 +12,32 @@ import HomeLayout from "../layouts/HomeLayout";
 import HomePage from "../pages/HomePage";
 import AdminPage from "../pages/AdminPage";
 import BlankLayout from "../layouts/BlankLayout";
+import Projects from "../pages/Projects";
+import Aboutus from "../pages/AboutUs";
+import Domains from "../pages/Domains";
+import Startup from "../pages/Startup";
 
 // INDEX OF ALL ROUTES = connect all layouts & pages together
 function Router() {
   return (
     <Routes>
       {/* public */}
-      <Route path="/" element={<HomeLayout />}>
-        <Route index path="/home" element={<HomePage />} />
-        <Route index path="/aboutus" element={<HomePage />} />
-        <Route index path="/projects" element={<HomePage />} />
-        <Route index path="/domains" element={<HomePage />} />
-        <Route index path="/startup" element={<HomePage />} />
-        {/* <Route path="*" element={<NotFoundPage />} /> */}
+      <Route element={<HomeLayout />}>
+        <Route index path="/" element={<HomePage />} />
+        <Route path="/aboutus" element={<Aboutus />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/domains" element={<Domains />} />
+        <Route path="/startup" element={<Startup />} />
 
         {/* CODERCOMM */}
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/user/:userId" element={<UserProfilePage />} />
         {/* <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} /> */}
-        {/* FORGOT PW */}
+        {/* <Route path="*" element={<NotFoundPage />} /> */}
       </Route>
 
-      {/* login/signup MODAL POPUP OR BLANK LAYOUT */}
+      {/* login/signup */}
       <Route path="/" element={<BlankLayout />}>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
