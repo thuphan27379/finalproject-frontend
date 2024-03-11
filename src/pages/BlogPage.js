@@ -39,6 +39,7 @@ const TabsWrapperStyle = styled("div")(({ theme }) => ({
 //
 function BlogPage() {
   const { user } = useAuth();
+  console.log(user);
   const [currentTab, setCurrentTab] = useState("profile");
 
   const handleChangeTab = (newValue) => {

@@ -37,14 +37,14 @@ const reducer = (state, action) => {
         isAuthenticated: true,
         user: action.payload.user,
       };
-    // 
+    //
     case REGISTER_SUCCESS:
       return {
         ...state,
         isAuthenticated: true,
         user: action.payload.user,
       };
-    // 
+    //
     case LOGOUT:
       return {
         ...state,
@@ -120,12 +120,14 @@ function AuthProvider({ children }) {
     const initialize = async () => {
       try {
         const accessToken = window.localStorage.getItem("accessToken");
+        console.log(accessToken);
 
         if (accessToken && isValidToken(accessToken)) {
           setSession(accessToken);
 
           const response = await apiService.get("/users/me"); //send to server
           const user = response.data;
+          console.log(user + "123");
 
           dispatch({
             type: INITIALIZE,
@@ -166,9 +168,9 @@ function AuthProvider({ children }) {
   // 1. func: user login
   const login = async ({ email, password }, callback) => {
     const response = await apiService.post("/auth/login", { email, password });
-
     // access token
     const { user, accessToken } = response.data;
+    console.log(user);
 
     setSession(accessToken);
 

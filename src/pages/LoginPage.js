@@ -57,7 +57,7 @@ function LoginPage() {
 
     try {
       await auth.login({ email, password }, () => {
-        navigate(from, { replace: true });
+        navigate("/blog", { replace: true });
       });
     } catch (error) {
       reset();
