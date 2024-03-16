@@ -14,7 +14,7 @@ export default function LeftBar() {
   return (
     <Box
       sx={{
-        width: "25vw",
+        // width: "25vw",
         marginTop: "90px",
         minHeight: "120vh",
         // marginLeft: "60px",

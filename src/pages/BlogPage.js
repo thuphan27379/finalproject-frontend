@@ -85,7 +85,6 @@ function BlogPage() {
       component: <OutgoingSents />,
     },
   ];
-
   // render
   // tu tren xuong: postForm -> postList
   return (

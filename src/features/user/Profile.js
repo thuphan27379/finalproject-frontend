@@ -1,9 +1,6 @@
 import { Grid, Stack } from "@mui/material";
 
 import useAuth from "../../hooks/useAuth";
-// import ProfileAbout from "./ProfileAbout";
-// import ProfileSocialInfo from "./ProfileSocialInfo";
-// import ProfileScorecard from "./ProfileScorecard";
 import PostForm from "../post/PostForm";
 import PostList from "../post/PostList";
 
@@ -11,7 +8,7 @@ import PostList from "../post/PostList";
 // function show info of user account: profile page, 3 cards on the left
 function Profile({ profile }) {
   const { user } = useAuth(); //get data of user from useAuth
-  console.log('user', user);
+
   //render
   return (
     <Grid container spacing={3} width={"100%"}>
@@ -26,8 +23,8 @@ function Profile({ profile }) {
 
       {/* center content 8/12 */}
       {/* SET GRID - MAIN BODY OUTLET */}
-      <Grid item>
-        <Stack spacing={3}>
+      <Grid container>
+        <Stack spacing={3} width={"100%"}>
           {user._id === profile._id && <PostForm />}
           {/* hien thi post form cua current user ma thoi 
           neu k, thi day la profile page ma moi nguoi co the xem dc */}

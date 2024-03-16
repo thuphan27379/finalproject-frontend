@@ -45,7 +45,8 @@ function HomeLayout() {
     <>
       <Container
         sx={{
-          width: "unset",
+          minWidth: "unset",
+          maxWidth: "unset!important",
           marginX: "auto",
           paddingLeft: "60px",
           paddingRight: "60px",
@@ -60,9 +61,9 @@ function HomeLayout() {
             display: "flex",
             justifyContent: "space-evenly",
             flexGrow: 1,
-            maxWidth: "unset",
-            // minWidth: "100vw",
-            paddingLeft: "60px",
+            maxWidth: "1536px",
+            marginX: "auto",
+            // paddingLeft: "60px",
           }}
         >
           <div style={{ maxWidth: "240px", marginLeft: "60px" }}>
@@ -71,7 +72,7 @@ function HomeLayout() {
 
           <div
             className="outlet-wrapper"
-            style={{ marginTop: "90px", minWidth: "60vw" }}
+            style={{ marginTop: "90px", minWidth: "calc(100% - 480px)" }}
           >
             <Outlet />
           </div>

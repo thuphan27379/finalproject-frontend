@@ -10,7 +10,7 @@ import { isValidToken } from "../utils/jwt";
 const initialState = {
   isInitialized: false,
   isAuthenticated: false,
-  user: null,
+  user: {},
 };
 
 // khai bao action types
@@ -117,49 +117,6 @@ function AuthProvider({ children }) {
   const updatedProfile = useSelector((state) => state.user.updatedProfile);
 
   // AUTH INITIALIZE: stay login at account page with value accessToken
-  useEffect(() => {
-    const initialize = async () => {
-      try {
-        const accessToken = window.localStorage.getItem("accessToken");
-        console.log(accessToken);
-
-        // ??????????????????????????????????????????????????????
-        if (accessToken && isValidToken(accessToken)) {
-          setSession(accessToken);
-
-          const response = await apiService.get("/users/me"); //send to server
-          const user = response.data;
-          console.log(user + "123");
-
-          dispatch({
-            type: INITIALIZE,
-            payload: { isAuthenticated: true, user },
-          });
-        } else {
-          setSession(null);
-
-          dispatch({
-            type: INITIALIZE,
-            payload: { isAuthenticated: false, user: null },
-          });
-        }
-      } catch (err) {
-        console.error(err);
-
-        // if accessToken is expired
-        setSession(null);
-        dispatch({
-          type: INITIALIZE,
-          payload: {
-            isAuthenticated: false,
-            user: null,
-          },
-        });
-      }
-    };
-
-    initialize();
-  }, []);
 
   // update profile: reset user account page
   useEffect(() => {
@@ -174,9 +131,9 @@ function AuthProvider({ children }) {
 
     // access token
     const { user, accessToken } = response.data;
-    console.log(user);
+    console.log("user login", user);
 
-    setSession(accessToken);
+    setSession(accessToken, user);
 
     dispatch({
       type: LOGIN_SUCCESS,
@@ -211,7 +168,48 @@ function AuthProvider({ children }) {
     callback();
   };
 
-  //
+  useEffect(() => {
+    const initialize = async () => {
+      try {
+        const accessToken = window.localStorage.getItem("accessToken");
+
+        // ??????????????????????????????????????????????????????
+        if (accessToken && isValidToken(accessToken)) {
+          setSession(accessToken);
+
+          const response = await apiService.get("/users/me"); //send to server
+          const user = response.data;
+
+          dispatch({
+            type: INITIALIZE,
+            payload: { isAuthenticated: true, user },
+          });
+        } else {
+          setSession(null);
+
+          dispatch({
+            type: INITIALIZE,
+            payload: { isAuthenticated: false, user: null },
+          });
+        }
+      } catch (err) {
+        console.error(err);
+
+        // if accessToken is expired
+        setSession(null);
+        dispatch({
+          type: INITIALIZE,
+          payload: {
+            isAuthenticated: false,
+            user: null,
+          },
+        });
+      }
+    };
+
+    initialize();
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{

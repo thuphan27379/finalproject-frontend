@@ -12,7 +12,12 @@ const drawerWidth = 240;
 
 export default function RightBar() {
   return (
-    <Box sx={{ width: "25vw", marginTop: "90px" }}>
+    <Box
+      sx={{
+        // width: "25vw",
+        marginTop: "90px",
+      }}
+    >
       {/* <CssBaseline /> */}
 
       <List sx={{ color: "#0A3161" }}>
