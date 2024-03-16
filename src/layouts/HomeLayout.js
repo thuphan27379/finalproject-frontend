@@ -43,8 +43,17 @@ function HomeLayout() {
     //   </Container>
     // </>
     <>
-      <Container sx={{ minHeight: "120vh", marginX: "auto" }}>
+      <Container
+        sx={{
+          width: "unset",
+          marginX: "auto",
+          paddingLeft: "60px",
+          paddingRight: "60px",
+        }}
+      >
         <HomeHeader />
+
+        <AlertMsg />
 
         <Box
           sx={{
@@ -56,17 +65,21 @@ function HomeLayout() {
             paddingLeft: "60px",
           }}
         >
-          <LeftBar />
+          <div style={{ maxWidth: "240px", marginLeft: "60px" }}>
+            <LeftBar />
+          </div>
+
           <div
             className="outlet-wrapper"
             style={{ marginTop: "90px", width: "60vw" }}
           >
             <Outlet />
           </div>
-          <RightBar />
-        </Box>
 
-        <AlertMsg />
+          <div style={{ maxWidth: "240px", marginRight: "60px" }}>
+            <RightBar />
+          </div>
+        </Box>
 
         <MainFooter />
       </Container>

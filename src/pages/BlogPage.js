@@ -39,7 +39,6 @@ const TabsWrapperStyle = styled("div")(({ theme }) => ({
 //
 function BlogPage() {
   const { user } = useAuth();
-  console.log(user);
   const [currentTab, setCurrentTab] = useState("profile");
 
   const handleChangeTab = (newValue) => {
@@ -54,6 +53,7 @@ function BlogPage() {
     // Chat:
     // Profile: show own info & enterprise
     // Setting: update profile
+
     {
       value: "profile",
       icon: <AccountBoxIcon sx={{ fontSize: 24 }} />,
@@ -89,12 +89,12 @@ function BlogPage() {
   // render
   // tu tren xuong: postForm -> postList
   return (
-    <Container>
+    <Container sx={{ marginTop: "90px" }}>
       {/* tab bo o trong Card? */}
       <Card
         sx={{
           mb: 3,
-          height: 280,
+          height: 45,
           position: "relative",
         }}
       >
@@ -124,6 +124,7 @@ function BlogPage() {
       </Card>
 
       {/* render component of every tab when click on */}
+      {/* <Profile profile={user} /> */}
       {PROFILE_TABS.map((tab) => {
         const isMatched = tab.value === currentTab;
         return isMatched && <Box key={tab.value}>{tab.component}</Box>;

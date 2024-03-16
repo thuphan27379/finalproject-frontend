@@ -52,14 +52,15 @@ function LoginPage() {
 
   // dau ra cua data
   const onSubmit = async (data) => {
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/blog";
     let { email, password } = data;
 
     try {
       await auth.login({ email, password }, () => {
-        navigate("/blog", { replace: true });
+        navigate(from, { replace: true });
       });
     } catch (error) {
+      console.log(error);
       reset();
       setError("responseError", error);
     }

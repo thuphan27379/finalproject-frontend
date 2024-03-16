@@ -1,6 +1,5 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -14,28 +13,16 @@ const drawerWidth = 240;
 
 export default function LeftBar() {
   return (
-    <Box sx={{ width: "25vw", marginTop: "90px" }}>
+    <Box
+      sx={{
+        width: "25vw",
+        marginTop: "90px",
+        minHeight: "120vh",
+        marginLeft: "60px",
+      }}
+    >
       {/* <CssBaseline /> */}
-      {/* <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          "& .MuiDrawer-paper": {
-            width: drawerWidth,
-            boxSizing: "border-box",
-          },
-          "& .MuiPaper-root": {
-            top: "70px",
-          },
-          "& .MuiPaper-elevation": {
-            border: "none",
-          },
-        }}
-        variant="permanent"
-        anchor="left"
-        backgroundColor="black" //
-      > */}
-      <List sx={{ color: "#0A3161", fontWeight: "800" }}>
+      <List sx={{ color: "#0A3161", fontWeight: "900" }}>
         {[
           "Startup Support Program",
           "Our Projects",
@@ -51,7 +38,6 @@ export default function LeftBar() {
           </ListItem>
         ))}
       </List>
-      {/* </Drawer> */}
     </Box>
   );
 }

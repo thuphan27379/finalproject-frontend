@@ -16,18 +16,31 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Badge, Stack } from "@mui/material";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import PublicIcon from "@mui/icons-material/Public";
+import useAuth from "../hooks/useAuth";
+import { useNavigate, Link as RouterLink } from "react-router-dom";
 
+// menu
 const pages = [
-  { label: "About us", path: "aboutus" },
-  { label: "Projects", path: "projects" },
-  { label: "Domains", path: "domains" },
-  { label: "Startup", path: "startup" },
-  { label: "Community", path: "community" },
+  { label: "About us", path: "" },
+  { label: "Projects", path: "" },
+  { label: "Domains", path: "" },
+  { label: "Startup", path: "" },
+  { label: "Community", path: "login" },
 ];
 
-const settings = ["My Domains", "My Profile", "My Group", "Setting", "Logout"];
+// avatar
+const settings = [
+  { label: "My Domains", path: "" },
+  { label: "My Profile", path: "blog" },
+  { label: "My Group", path: "blog" },
+  { label: "Setting", path: "account" }, // ok
+  { label: "Logout", path: "" },
+];
 
 function ResponsiveAppBar() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -43,8 +56,19 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (event) => {
     setAnchorElUser(null);
+  };
+  //
+  const handleLogout = async () => {
+    try {
+      handleCloseNavMenu();
+      await logout(() => {
+        navigate("/login");
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   // search
@@ -103,10 +127,10 @@ function ResponsiveAppBar() {
         // text: "black",
       }}
     >
-      {/*  */}
+      {/* logo */}
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {/* logo, link to homepage */}
+          {/* link to homepage */}
           <Stack
             direction="row"
             sx={{
@@ -115,7 +139,7 @@ function ResponsiveAppBar() {
             }}
           >
             <IconButton sx={{ p: 0, mr: 2 }}>
-              <Avatar alt="" src="./logo.png" />
+              <Avatar alt="" src="./logo.png" to="/" component={RouterLink} />
             </IconButton>
             <Typography
               variant="h6"
@@ -149,6 +173,7 @@ function ResponsiveAppBar() {
                   textTransform: "none",
                 }}
                 to={`/${page.path}`}
+                component={RouterLink}
               >
                 {page.label}
               </Button>
@@ -168,7 +193,7 @@ function ResponsiveAppBar() {
             </Search>
           </Stack>
 
-          {/* icon & avt */}
+          {/* icon */}
           <Stack
             direction="row"
             sx={{
@@ -202,7 +227,7 @@ function ResponsiveAppBar() {
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Badge>
                     <Avatar
-                      alt="Home"
+                      alt="Account"
                       src="./logo.png"
                       sx={{
                         width: "30px",
@@ -230,8 +255,13 @@ function ResponsiveAppBar() {
                 onClose={handleCloseUserMenu}
               >
                 {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                  <MenuItem
+                    // key={setting}
+                    onClick={handleCloseUserMenu}
+                    to={`/${setting.path}`}
+                    component={RouterLink}
+                  >
+                    <Typography textAlign="center">{setting.label}</Typography>
                   </MenuItem>
                 ))}
               </Menu>

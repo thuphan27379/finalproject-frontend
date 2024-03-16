@@ -26,7 +26,7 @@ function Profile({ profile }) {
 
       {/* center content 8/12 */}
       {/* SET GRID - MAIN BODY OUTLET */}
-      <Grid item xs={12} md={8}>
+      <Grid item>
         <Stack spacing={3}>
           {user._id === profile._id && <PostForm />}
           {/* hien thi post form cua current user ma thoi 

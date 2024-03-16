@@ -33,15 +33,15 @@ function UserProfilePage() {
         <LoadingScreen />
       ) : (
         <>
-          <Card
+          {/* <Card
             sx={{
               mb: 3,
               height: 280,
               position: "relative",
             }}
-          >
-            {/* {selectedUser && <ProfileCover profile={selectedUser} />} */}
-          </Card>
+          > */}
+          {/* {selectedUser && <ProfileCover profile={selectedUser} />} */}
+          {/* </Card> */}
           {selectedUser && <Profile profile={selectedUser} />}
         </>
       )}

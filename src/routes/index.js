@@ -24,10 +24,10 @@ function Router() {
       {/* public */}
       <Route element={<HomeLayout />}>
         <Route index path="/" element={<HomePage />} />
-        <Route path="/aboutus" element={<Aboutus />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/domains" element={<Domains />} />
-        <Route path="/startup" element={<Startup />} />
+        <Route path="/" element={<Aboutus />} />
+        <Route path="/" element={<Projects />} />
+        <Route path="/" element={<Domains />} />
+        <Route path="/" element={<Startup />} />
 
         {/* CODERCOMM */}
         <Route path="/blog" element={<BlogPage />} />

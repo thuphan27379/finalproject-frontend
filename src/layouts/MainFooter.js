@@ -5,11 +5,11 @@ import { Link, Typography } from "@mui/material";
 function MainFooter() {
   return (
     <Typography variant="body2" color="text.secondary" align="center" p={1}>
-      {"Copyright © "} 2000-{new Date().getFullYear()}{" "}
+      {"© "} 2000-{new Date().getFullYear()}{" "}
       <Link color="inherit" href="">
-        My Company
+        My Company Inc
       </Link>
-      {"."} Privacy Terms Security{"."}
+      {"."} Term Policy Security{"."}
     </Typography>
   );
 }

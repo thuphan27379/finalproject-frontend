@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import apiService from "../app/apiService";
 import { isValidToken } from "../utils/jwt";
 
+// khi reload blog ???????????? bao loi user?
 //// all about authentication ////
 // init value
 const initialState = {
@@ -122,6 +123,7 @@ function AuthProvider({ children }) {
         const accessToken = window.localStorage.getItem("accessToken");
         console.log(accessToken);
 
+        // ??????????????????????????????????????????????????????
         if (accessToken && isValidToken(accessToken)) {
           setSession(accessToken);
 
@@ -168,6 +170,8 @@ function AuthProvider({ children }) {
   // 1. func: user login
   const login = async ({ email, password }, callback) => {
     const response = await apiService.post("/auth/login", { email, password });
+    console.log(response);
+
     // access token
     const { user, accessToken } = response.data;
     console.log(user);

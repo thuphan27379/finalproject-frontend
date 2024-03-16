@@ -34,7 +34,6 @@ const HomePage = () => {
         maxWidth={"60vw"}
         marginX={"auto"}
       >
-        <div>Home Page & Blog Page</div>
         {/* {list.map((item, index) => (
         <div key={index} style={{ border: "1px solid #ccc" }}>
           <h3>{item.title}</h3>
