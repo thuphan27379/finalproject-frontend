@@ -7,7 +7,6 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 
 // homepage: company tabs
-// blogPage: blog tabs
 // LINK TO PAGE
 const drawerWidth = 240;
 
@@ -18,7 +17,7 @@ export default function LeftBar() {
         width: "25vw",
         marginTop: "90px",
         minHeight: "120vh",
-        marginLeft: "60px",
+        // marginLeft: "60px",
       }}
     >
       {/* <CssBaseline /> */}

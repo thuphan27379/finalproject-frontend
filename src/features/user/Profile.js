@@ -11,10 +11,10 @@ import PostList from "../post/PostList";
 // function show info of user account: profile page, 3 cards on the left
 function Profile({ profile }) {
   const { user } = useAuth(); //get data of user from useAuth
-
+  console.log('user', user);
   //render
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={3} width={"100%"}>
       {/* left sidebar 4/12 */}
       {/* <Grid item xs={12} md={4}>
         <Stack spacing={3}>

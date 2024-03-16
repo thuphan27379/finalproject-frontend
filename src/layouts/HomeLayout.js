@@ -71,7 +71,7 @@ function HomeLayout() {
 
           <div
             className="outlet-wrapper"
-            style={{ marginTop: "90px", width: "60vw" }}
+            style={{ marginTop: "90px", minWidth: "60vw" }}
           >
             <Outlet />
           </div>

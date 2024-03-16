@@ -7,7 +7,6 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 
 // homepage: domain..
-// blogPage: all company tabs
 // LINK TO PAGE
 const drawerWidth = 240;
 

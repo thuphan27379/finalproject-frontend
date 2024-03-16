@@ -98,9 +98,6 @@ function BlogPage() {
           position: "relative",
         }}
       >
-        {/* avt & cover img */}
-        {/* <ProfileCover profile={user} /> */}
-
         {/* tabs */}
         <TabsWrapperStyle>
           <Tabs
