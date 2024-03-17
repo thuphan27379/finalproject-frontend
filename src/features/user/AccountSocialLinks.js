@@ -12,7 +12,7 @@ import useAuth from "../../hooks/useAuth";
 import { FormProvider, FTextField } from "../../components/form";
 import { updateUserProfile } from "./userSlice";
 
-// for edit social links, where???
+// for edit social links
 const SOCIAL_LINKS = [
   {
     value: "facebookLink",
@@ -77,7 +77,6 @@ function AccountSocialLinks() {
             />
           ))}
 
-          {/* KHONG THAY O DAU */}
           <LoadingButton
             type="submit"
             variant="contained"

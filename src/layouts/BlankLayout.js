@@ -1,17 +1,26 @@
 import { Outlet } from "react-router-dom";
-import { Stack } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import React from "react";
 
-import Logo from "../components/Logo";
 import HomeHeader from "./HomeHeader";
+import MainFooter from "./MainFooter";
 
-// login/register/notfound
+// login/register/notfound page
 function BlankLayout() {
   return (
-    <Stack minHeight="100vh" justifyContent="center" alignItems="center">
+    <Stack
+      paddingTop={30}
+      minHeight="100vh"
+      justifyContent="center"
+      alignItems="center"
+    >
       <HomeHeader />
 
       <Outlet />
+
+      <Box sx={{ flexGrow: 1 }} />
+
+      <MainFooter />
     </Stack>
   );
 }

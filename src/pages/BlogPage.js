@@ -10,14 +10,13 @@ import { capitalCase } from "change-case";
 
 import useAuth from "../hooks/useAuth";
 import Profile from "../features/user/Profile";
-// import ProfileCover from "../features/user/ProfileCover";
 import AddFriend from "../features/friend/AddFriend";
 import FriendRequests from "../features/friend/FriendRequests";
 import FriendList from "../features/friend/FriendList";
 import OutgoingSents from "../features/friend/OutgoingSent";
 
 // CODERCOMM
-// user profile page: bo cover img, tabs..
+// user profile page
 const TabsWrapperStyle = styled("div")(({ theme }) => ({
   // MUI styled() for cover
   zIndex: 9,
@@ -26,6 +25,8 @@ const TabsWrapperStyle = styled("div")(({ theme }) => ({
   display: "flex",
   position: "absolute",
   backgroundColor: "#fff",
+  paddingLeft: 0,
+  marginLeft: 0,
   // responsive
   [theme.breakpoints.up("sm")]: {
     justifyContent: "center",
@@ -40,6 +41,7 @@ const TabsWrapperStyle = styled("div")(({ theme }) => ({
 function BlogPage() {
   const { user } = useAuth();
   const [currentTab, setCurrentTab] = useState("profile");
+  console.log(user);
 
   const handleChangeTab = (newValue) => {
     setCurrentTab(newValue);
@@ -86,7 +88,6 @@ function BlogPage() {
     },
   ];
   // render
-  // tu tren xuong: postForm -> postList
   return (
     <Container sx={{ marginTop: "90px" }}>
       {/* tab bo o trong Card? */}
@@ -95,11 +96,14 @@ function BlogPage() {
           mb: 3,
           height: 45,
           position: "relative",
+          paddingLeft: 0,
+          marginLeft: 0,
         }}
       >
-        {/* tabs */}
-        <TabsWrapperStyle>
+        {/* tabs*/}
+        <TabsWrapperStyle sx={{ paddingLeft: 0, marginLeft: 0 }}>
           <Tabs
+            sx={{ paddingLeft: 0, marginLeft: 0 }}
             value={currentTab}
             scrollButtons="auto"
             variant="scrollable"
@@ -108,6 +112,7 @@ function BlogPage() {
           >
             {PROFILE_TABS.map((tab) => (
               <Tab
+                sx={{ paddingLeft: 0, marginLeft: 0 }}
                 disableRipple
                 key={tab.value}
                 value={tab.value}
@@ -120,7 +125,6 @@ function BlogPage() {
       </Card>
 
       {/* render component of every tab when click on */}
-      {/* <Profile profile={user} /> */}
       {PROFILE_TABS.map((tab) => {
         const isMatched = tab.value === currentTab;
         return isMatched && <Box key={tab.value}>{tab.component}</Box>;

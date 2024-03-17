@@ -5,7 +5,7 @@ import PostForm from "../post/PostForm";
 import PostList from "../post/PostList";
 
 // show own info & enterprise
-// function show info of user account: profile page, 3 cards on the left
+// function show info of user account: profile page
 function Profile({ profile }) {
   const { user } = useAuth(); //get data of user from useAuth
 
@@ -26,7 +26,7 @@ function Profile({ profile }) {
       <Grid container>
         <Stack spacing={3} width={"100%"}>
           {user._id === profile._id && <PostForm />}
-          {/* hien thi post form cua current user ma thoi 
+          {/* hien thi postForm cua current user ma thoi 
           neu k, thi day la profile page ma moi nguoi co the xem dc */}
           <PostList userId={profile._id} />
         </Stack>

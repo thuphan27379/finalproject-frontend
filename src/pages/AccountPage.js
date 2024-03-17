@@ -8,7 +8,7 @@ import AccountGeneral from "../features/user/AccountGeneral";
 import AccountSocialLinks from "../features/user/AccountSocialLinks";
 
 // CODERCOMM
-// for updating account info of user
+// account setting: for updating account info of user
 function AccountPage() {
   const [currentTab, setCurrentTab] = useState("general");
 
@@ -27,7 +27,7 @@ function AccountPage() {
 
   //
   return (
-    <Container>
+    <Container sx={{ paddingTop: "80px" }}>
       <Typography variant="h5" gutterBottom>
         Account Settings
       </Typography>

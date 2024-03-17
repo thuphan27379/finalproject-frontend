@@ -20,6 +20,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Modal from "@mui/material/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { LoadingButton } from "@mui/lab";
+// import { useFormContext, Controller } from "react-hook-form";
 
 import { fDate } from "../../utils/formatTime";
 import PostReaction from "./PostReaction";
@@ -27,6 +28,7 @@ import CommentForm from "../comment/CommentForm";
 import CommentList from "../comment/CommentList";
 import { deletePost, editPost } from "../post/postSlice";
 import { FTextField, FUploadImage, FormProvider } from "../../components/form";
+// import { editPost } from "../post/postSlice";
 
 //show a post with comment and reaction, delete/edit
 const yupSchema = Yup.object().shape({
@@ -73,11 +75,54 @@ function PostCard({ post }) {
   const [isEditing] = React.useState(false); // State to track editing mode
   const [openModal, setOpenModal] = React.useState(false);
 
+  // const handleEdit = () => {
+  //   // dispatch(PostForm({}));
+  //   setIsEditing(true); // Set editing mode to true when the "Edit" button is clicked
+  // };
+
+  // const handleSave = () => {
+  //   // Dispatch the editPost action with the edited content and post ID
+  //   dispatch(
+  //     editPost({ postId: post._id, content: editedContent, image: post.image })
+  //   );
+  //   setIsEditing(false); // Reset editing mode after saving changes
+  //   handleClose();
+  // };
+
+  const handleContentChange = (e) => {
+    e.stopPropagation();
+    setEditedContent(e.target.value);
+  };
+
+  const handleInputMouseDown = (e) => {
+    // Stop the event propagation to prevent closing the popover when clicking on the input
+    e.stopPropagation();
+  };
+
   //
   const methods = useForm({
     resolver: yupResolver(yupSchema),
     defaultValues,
   });
+
+  // const { setValue } = methods;
+
+  // edit image
+  // const handleDrop = useCallback(
+  //   (acceptedFiles) => {
+  //     const file = acceptedFiles[0];
+
+  //     if (file) {
+  //       setValue(
+  //         "image",
+  //         Object.assign(file, {
+  //           preview: URL.createObjectURL(file),
+  //         })
+  //       );
+  //     }
+  //   },
+  //   [setValue]
+  // );
 
   // modal edit
   const handleOpenModal = () => setOpenModal(true);
@@ -151,7 +196,7 @@ function PostCard({ post }) {
         }
       />
 
-      {/* popover modal delete & edit */}
+      {/* popover */}
       <Popover
         open={open}
         anchorEl={anchorEl}
@@ -170,6 +215,7 @@ function PostCard({ post }) {
             Edit
           </Button>
 
+          {/* popup modal delete & edit */}
           <Modal
             open={openModal}
             onClose={handleCloseModal}
@@ -187,7 +233,7 @@ function PostCard({ post }) {
               <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
                 <Stack spacing={2}>
                   <FTextField
-                    // content of the Post
+                    // content of the Post, not placeholder?!?!
                     name="content"
                     multiline
                     fullWidth
@@ -202,8 +248,9 @@ function PostCard({ post }) {
                   />
 
                   {/* UPLOAD A FILE: btn choose File  */}
+                  {/* <input type="file" ref={fileInput} onChange={handleFile} /> */}
                   <FUploadImage
-                    // upload image with the Post
+                    // upload image with the Post, the image of the post?!?!
                     name="image"
                     accept="image/*"
                     maxSize={3145728}
@@ -218,6 +265,15 @@ function PostCard({ post }) {
                       justifyContent: "flex-end",
                     }}
                   >
+                    <LoadingButton
+                      // loading...
+                      type="cancel"
+                      variant="contained"
+                      size="small"
+                      // loading={isSubmitting || isLoading}
+                    >
+                      Cancel
+                    </LoadingButton>
                     <LoadingButton
                       // loading...
                       type="submit"
@@ -238,6 +294,14 @@ function PostCard({ post }) {
       {/* content */}
       <Stack spacing={2} sx={{ p: 3 }}>
         <Typography>{post.content}</Typography>
+        {/* {isEditing && (
+          <input
+            type="text"
+            value={editedContent}
+            onChange={handleContentChange}
+            onMouseDown={handleInputMouseDown}
+          />
+        )} */}
 
         {/* media */}
         {post.image && (

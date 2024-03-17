@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-
-import MUIThemeProvider from "./theme/index";
 import Router from "./routes";
+
+import ThemeProvider from "./theme/index";
 import { AuthProvider } from "./contexts/AuthContext"; //access token
 
 //
@@ -11,9 +11,9 @@ function App() {
     <div>
       <AuthProvider>
         <BrowserRouter>
-          <MUIThemeProvider>
+          <ThemeProvider>
             <Router />
-          </MUIThemeProvider>
+          </ThemeProvider>
         </BrowserRouter>
       </AuthProvider>
     </div>

@@ -33,7 +33,7 @@ const settings = [
   { label: "My Domains", path: "" },
   { label: "My Profile", path: "blog" },
   { label: "My Group", path: "blog" },
-  { label: "Setting", path: "account" }, // ok
+  { label: "Setting", path: "account" },
   { label: "Logout", path: "" },
 ];
 
@@ -161,7 +161,13 @@ function ResponsiveAppBar() {
           </Stack>
 
           {/* main menu */}
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+              paddingLeft: "50px",
+            }}
+          >
             {pages.map((page) => (
               <Button
                 key={page}
@@ -257,7 +263,11 @@ function ResponsiveAppBar() {
                 {settings.map((setting) => (
                   <MenuItem
                     // key={setting}
-                    onClick={handleCloseUserMenu}
+                    onClick={
+                      setting.label === "Logout"
+                        ? handleLogout
+                        : handleCloseUserMenu
+                    }
                     to={`/${setting.path}`}
                     component={RouterLink}
                   >

@@ -2,7 +2,7 @@ import axios from "axios";
 import { BASE_URL } from "./config";
 console.log(BASE_URL);
 
-//
+// connect with server
 const apiService = axios.create({
   baseURL: BASE_URL,
 });

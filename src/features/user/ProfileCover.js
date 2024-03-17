@@ -6,7 +6,6 @@ import useAuth from "../../hooks/useAuth";
 import ActionButton from "../friend/ActionButton";
 import FriendStatus from "../friend/FriendStatus";
 
-// delete avt and cover img
 // cover with avt and tabs
 const RootStyle = styled("div")(({ theme }) => ({
   // blur the cover img
@@ -46,7 +45,7 @@ function ProfileCover({ profile }) {
   const {
     _id: targetUserId,
     name,
-    // jobTitle,
+    jobTitle,
     coverUrl,
     avatarUrl,
     friendship,
@@ -95,7 +94,7 @@ function ProfileCover({ profile }) {
         >
           <Typography variant="h5">{name}</Typography>
 
-          {/* <Typography sx={{ opacity: 0.72 }}>{jobTitle}</Typography> */}
+          <Typography sx={{ opacity: 0.72 }}>{jobTitle}</Typography>
 
           {/* friend status btn */}
           {friendStatus ? (

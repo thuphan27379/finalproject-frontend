@@ -2,8 +2,6 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import { Container } from "@mui/material";
 import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
-import LeftBar from "../layouts/LeftBar";
-import RightBar from "../layouts/RightBar";
 
 // data list
 const rows: GridRowsProp = [
@@ -25,22 +23,10 @@ const HomePage = () => {
         display: "flex",
         justifyContent: "space-evenly",
         maxWidth: "unset!important",
+        marginTop: 0,
       }}
     >
-      {/* <LeftBar /> */}
-
-      <Grid
-        // marginTop={"68px"}
-        maxWidth={"60vw"}
-        marginX={"auto"}
-      >
-        {/* {list.map((item, index) => (
-        <div key={index} style={{ border: "1px solid #ccc" }}>
-          <h3>{item.title}</h3>
-          <h3>{item.content}</h3>
-        </div>
-      ))} */}
-
+      <Grid marginTop={"68px"} maxWidth={"60vw"} marginX={"auto"}>
         <div>
           <div class="featured-articles">
             <h2>Featured articles</h2>
@@ -163,8 +149,6 @@ const HomePage = () => {
           <DataGrid rows={rows} columns={columns} />
         </div>
       </Grid>
-
-      {/* <RightBar /> */}
     </Container>
   );
 };

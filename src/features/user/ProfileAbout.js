@@ -4,7 +4,6 @@ import PinDropIcon from "@mui/icons-material/PinDrop";
 import EmailIcon from "@mui/icons-material/Email";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 
-// MOVE TO LEFTBAR
 //* icon */
 const IconStyle = styled(Box)(({ theme }) => ({
   width: 20,
