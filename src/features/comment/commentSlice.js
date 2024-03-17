@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-
 import apiService from "../../app/apiService"; //ket noi server
 import { COMMENTS_PER_POST } from "../../app/config";
 // import { confirmAlert } from "react-confirm-alert";
@@ -9,10 +8,10 @@ import { COMMENTS_PER_POST } from "../../app/config";
 const initialState = {
   isLoading: false,
   error: null,
-  commentsByPost: {}, //luu comments theo postId
+  commentsByPost: {},
   totalCommentsByPost: {},
   currentPageByPost: {},
-  commentsById: {}, //luu tat ca commentId
+  commentsById: {},
 };
 
 // createSlice for all slices
@@ -29,14 +28,12 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
-    // get Comments Success
+    //
     getCommentsSuccess(state, action) {
       state.isLoading = false;
       state.error = "";
-      // state.comments = state.comments.concat(action.payload);
       const { postId, comments, count, page } = action.payload;
 
-      // quan ly comment theo postId
       comments.forEach(
         (comment) => (state.commentsById[comment._id] = comment)
       );
@@ -48,20 +45,19 @@ const slice = createSlice({
       state.totalCommentsByPost[postId] = count;
       state.currentPageByPost[postId] = page;
     },
-    // create Comment Success
+    //
     createCommentSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
     },
-    // send Comment Reaction Success
+    //
     sendCommentReactionSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
-
       const { commentId, reactions } = action.payload;
       state.commentsById[commentId].reactions = reactions;
     },
-    // delete Comment Success
+    //
     deleteCommentSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
@@ -88,13 +84,12 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-// export functions //
+// functions //
 // get all comments
 export const getComments =
   ({ postId, page = 1, limit = COMMENTS_PER_POST }) =>
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
-
     try {
       const params = {
         page: page,
@@ -121,7 +116,6 @@ export const createComment =
   ({ postId, content }) =>
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
-
     try {
       const response = await apiService.post("/comments", {
         content,
@@ -140,7 +134,6 @@ export const sendCommentReaction =
   ({ commentId, emoji }) =>
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
-
     try {
       const response = await apiService.post(`/reactions`, {
         targetType: "Comment",

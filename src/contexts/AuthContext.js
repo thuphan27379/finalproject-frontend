@@ -1,3 +1,4 @@
+// module 2.3 .3.4 & .5
 import { createContext, useReducer, useEffect } from "react";
 import { useSelector } from "react-redux";
 
@@ -8,8 +9,8 @@ import { isValidToken } from "../utils/jwt";
 //// all about authentication ////
 // init value
 const initialState = {
-  isInitialized: false,
-  isAuthenticated: false,
+  isInitialized: false, //first render yet?, stay login when refresh page, lay thong tin trong local storage
+  isAuthenticated: false, //login yet?
   user: null,
 };
 
@@ -23,6 +24,7 @@ const UPDATE_PROFILE = "AUTH.UPDATE_PROFILE";
 // reducers (khai bao states)
 const reducer = (state, action) => {
   switch (action.type) {
+    // persistent login
     case INITIALIZE:
       const { isAuthenticated, user } = action.payload;
       return {
@@ -31,21 +33,21 @@ const reducer = (state, action) => {
         isAuthenticated,
         user,
       };
-    //
+    // login
     case LOGIN_SUCCESS:
       return {
         ...state,
         isAuthenticated: true,
         user: action.payload.user,
       };
-    //
+    // register
     case REGISTER_SUCCESS:
       return {
         ...state,
         isAuthenticated: true,
         user: action.payload.user,
       };
-    //
+    // logout
     case LOGOUT:
       return {
         ...state,

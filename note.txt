@@ -12,3 +12,5 @@ https://mui.com/store/items/minimal-dashboard-free/
 login
 phanthachminhthu@gmail.com
 123456
+
+https://app.swaggerhub.com/apis-docs/dhminh1024/CoderComm/1.0.0#/Auth/loginWithEmail

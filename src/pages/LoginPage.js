@@ -19,7 +19,7 @@ import { FCheckbox, FormProvider, FTextField } from "../components/form";
 import useAuth from "../hooks/useAuth";
 
 // CODERCOMM
-// blank layout
+// validate input
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string().required("Password is required"),
@@ -72,7 +72,6 @@ function LoginPage() {
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={3}>
           {/* message error & go to sign up */}
-          {/* severity="" khong hide phia duoi appbar khi scroll */}
           {!!errors.responseError && (
             <Alert severity="error">{errors.responseError.message}</Alert>
           )}
@@ -83,7 +82,7 @@ function LoginPage() {
             </Link>
           </Alert>
 
-          {/*  */}
+          {/* form */}
           <FTextField name="email" label="Email address" />
           <FTextField
             name="password"

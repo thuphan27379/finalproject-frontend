@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
-import { Card, Container } from "@mui/material";
+import { Container } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import Profile from "../features/user/Profile";
-// import ProfileCover from "../features/user/ProfileCover";
 import { getUser } from "../features/user/userSlice";
 import LoadingScreen from "../components/LoadingScreen";
+import ProfileAbout from "../features/user/ProfileAbout";
+import ProfileScoreCard from "../features/user/ProfileScorecard";
+import ProfileSocialInfo from "../features/user/ProfileSocialInfo";
 
 // CODERCOMM
 function UserProfilePage() {
@@ -28,22 +30,14 @@ function UserProfilePage() {
 
   //UI
   return (
-    <Container>
+    <Container sx={{ paddingTop: "80px" }}>
+      {/* <ProfileAbout /> */}
+      {/* <ProfileScoreCard /> */}
+      {/* <ProfileSocialInfo /> */}
       {isLoading ? (
         <LoadingScreen />
       ) : (
-        <>
-          {/* <Card
-            sx={{
-              mb: 3,
-              height: 280,
-              position: "relative",
-            }}
-          > */}
-          {/* {selectedUser && <ProfileCover profile={selectedUser} />} */}
-          {/* </Card> */}
-          {selectedUser && <Profile profile={selectedUser} />}
-        </>
+        <>{selectedUser && <Profile profile={selectedUser} />}</>
       )}
     </Container>
   );

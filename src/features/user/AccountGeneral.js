@@ -11,7 +11,6 @@ import { FormProvider, FTextField, FUploadAvatar } from "../../components/form";
 import { fData } from "../../utils/numberFormat";
 import { updateUserProfile } from "./userSlice";
 
-// OK
 // Account setting: for update profile & avt..
 const UpdateUserSchema = yup.object().shape({
   name: yup.string().required("Name is required"),
